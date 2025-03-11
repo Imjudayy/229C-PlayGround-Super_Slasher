@@ -7,13 +7,11 @@ public class PlayerController1 : MonoBehaviour
     public float jumpForce = 7f;
     public int maxJumps = 2;
 
-    private CharacterController controller;
-    private Vector3 moveDirection;
+    private Rigidbody rb;
     private Vector2 inputMove;
     private int jumpCount = 0;
     private bool isGrounded;
-    private float gravity = -9.81f;
-    private float verticalVelocity;
+    private bool isHit = false; 
 
     private PlayerInput playerInput;
 
@@ -24,29 +22,25 @@ public class PlayerController1 : MonoBehaviour
 
     private void Awake()
     {
-        controller = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInput>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         CheckGround();
-        Move();
+        if (!isHit)
+        {
+            Move();
+        }
     }
 
     private void Move()
     {
         Vector3 move = transform.right * inputMove.x + transform.forward * inputMove.y;
-        moveDirection = move * moveSpeed;
+        Vector3 moveForce = move * moveSpeed;
 
-        if (isGrounded && verticalVelocity < 0)
-        {
-            verticalVelocity = -2f;
-        }
-        verticalVelocity += gravity * Time.deltaTime;
-        moveDirection.y = verticalVelocity;
-
-        controller.Move(moveDirection * Time.deltaTime);
+        rb.AddForce(new Vector3(moveForce.x, 0, moveForce.z), ForceMode.Force);
     }
 
     private void CheckGround()
@@ -54,7 +48,7 @@ public class PlayerController1 : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundLayer);
         if (isGrounded)
         {
-            jumpCount = 0;
+            jumpCount = 0; 
         }
     }
 
@@ -67,19 +61,23 @@ public class PlayerController1 : MonoBehaviour
     {
         if (context.started && jumpCount < maxJumps)
         {
-            verticalVelocity = jumpForce;
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z); 
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             jumpCount++;
         }
     }
 
-    // เปลี่ยน Input ถ้ามีการกดปุ่มจากอุปกรณ์อื่น
-    public void OnDeviceLost()
+    private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log($"{playerInput.devices} Disconnected");
+        if (collision.gameObject.CompareTag("Sword"))
+        {
+            isHit = true;
+            Invoke("ResetHit", 0.5f); 
+        }
     }
 
-    public void OnDeviceRegained()
+    private void ResetHit()
     {
-        Debug.Log($"{playerInput.devices} Reconnected");
+        isHit = false;
     }
 }
