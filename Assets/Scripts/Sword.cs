@@ -19,7 +19,8 @@ public class Sword : MonoBehaviour
         Rigidbody targetRb = collision.gameObject.GetComponent<Rigidbody>();
         if (targetRb != null)
         {
-            targetRb.AddForce(transform.up * force, ForceMode.Impulse);
+           // targetRb.AddForce(transform.forward * force, ForceMode.Impulse); // chek form transfrom wepon
+            targetRb.AddForce(-collision.transform.forward * force, ForceMode.Impulse);
         }
         acc += 2;
     }
