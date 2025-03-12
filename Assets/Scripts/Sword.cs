@@ -3,6 +3,8 @@ using UnityEngine;
 public class Sword : MonoBehaviour
 {
     public float force, mass, acc;
+    public GameObject owner; 
+
     void Start()
     {
         mass = GetComponent<Rigidbody>().mass;
@@ -15,19 +17,14 @@ public class Sword : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player2") && collision.gameObject != owner)
         {
-           
-            if (!collision.transform.IsChildOf(transform.parent))
+            Rigidbody targetRb = collision.gameObject.GetComponent<Rigidbody>();
+            if (targetRb != null)
             {
-                Rigidbody targetRb = collision.gameObject.GetComponent<Rigidbody>();
-                if (targetRb != null)
-                {
-                    targetRb.AddForce(-collision.transform.forward * force, ForceMode.Impulse);
-                }
-                acc += 2;
+                targetRb.AddForce(-collision.transform.forward * force, ForceMode.Impulse);
             }
+            acc += 2;
         }
     }
 }

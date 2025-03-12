@@ -20,6 +20,7 @@ public class PlayerController1 : MonoBehaviour
     public float groundCheckRadius = 0.3f;
     public LayerMask groundLayer;
 
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -74,6 +75,15 @@ public class PlayerController1 : MonoBehaviour
         {
             isHit = true;
             Invoke("ResetHit", 0.5f); 
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("KillZone")) 
+        {
+            Debug.Log(gameObject.name + " ตาย! ");
+            Destroy(gameObject);
         }
     }
 

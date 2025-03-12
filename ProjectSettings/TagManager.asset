@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground
   - Sword
+  - KillZone
+  - Player1
+  - Player2
   layers:
   - Default
   - TransparentFX
