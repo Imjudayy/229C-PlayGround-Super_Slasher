@@ -37,7 +37,8 @@ public class PlayerController1 : MonoBehaviour
 
     private void Move()
     {
-        Vector3 move = transform.right * inputMove.x + transform.forward * inputMove.y;
+        //Vector3 move = transform.right * inputMove.x + transform.forward * inputMove.y; // ตามแกน Local
+        Vector3 move = new Vector3(inputMove.x, 0, inputMove.y);
         Vector3 moveForce = move * moveSpeed;
 
         rb.AddForce(new Vector3(moveForce.x, 0, moveForce.z), ForceMode.Force);
