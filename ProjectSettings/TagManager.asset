@@ -9,6 +9,7 @@ TagManager:
   - KillZone
   - Player1
   - Player2
+  - Hamer
   layers:
   - Default
   - TransparentFX
