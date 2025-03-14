@@ -2,20 +2,23 @@ using UnityEngine;
 
 public class CollisionDetection : MonoBehaviour
 {
-    public GameManager gameManager; 
+    public GameManager gameManager;
+    private bool hasTriggered = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        
-        if (other.CompareTag("Player1"))
+        if (!hasTriggered)
         {
-            gameManager.PlayerDestroyed("Player1"); 
+            if (other.CompareTag("Player1"))
+            {
+                gameManager.PlayerDestroyed("Player1");
+            }
+            else if (other.CompareTag("Player2"))
+            {
+                gameManager.PlayerDestroyed("Player2");
+            }
+            hasTriggered = true;
+            Destroy(other.gameObject);
         }
-        else if (other.CompareTag("Player2"))
-        {
-            gameManager.PlayerDestroyed("Player2"); 
-        }
-
-        Destroy(other.gameObject); 
     }
 }
