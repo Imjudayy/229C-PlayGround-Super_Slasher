@@ -27,6 +27,8 @@ public class PlayerController1 : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
     }
 
+    
+
     private void FixedUpdate()
     {
         CheckGround();

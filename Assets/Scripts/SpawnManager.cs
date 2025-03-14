@@ -8,7 +8,7 @@ public class SpawnManager : MonoBehaviour
     
     void Start()
     {
-        InvokeRepeating("Spawn", 1, 10);
+        InvokeRepeating("Spawn", 15, 10);
     }
 
    
@@ -22,7 +22,7 @@ public class SpawnManager : MonoBehaviour
     {
         Vector3 randomPos = new Vector3(Random.Range(-xRange, xRange), transform.position.y, Random.Range(-zRange, zRange));
         int coinIndex = Random.Range(0, coins.Length);
-        Instantiate(coins[2], randomPos, coins[coinIndex].transform.rotation);
+        Instantiate(coins[coinIndex], randomPos, coins[coinIndex].transform.rotation);
     }
 
 }

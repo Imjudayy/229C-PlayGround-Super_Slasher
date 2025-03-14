@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2453528329234359601}
   - component: {fileID: 3383858224742887905}
   - component: {fileID: 5162983796982106368}
+  - component: {fileID: 4570940197057085658}
   m_Layer: 0
   m_Name: hamer
   m_TagString: Hamer
@@ -78,6 +79,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &4570940197057085658
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267512859067481028}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.079597, y: 0.27549434, z: 0.8027469}
+  m_Center: {x: -3.8169892, y: 1.0838345, z: -0.20729488}
 --- !u!1 &2056739654656751540
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,7 +132,7 @@ Transform:
   m_GameObject: {fileID: 2056739654656751540}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 1, z: 10}
+  m_LocalPosition: {x: 5, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -384,7 +406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6d4fb7fe188b974c97cfd9170bed24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 1458504761284194665, guid: 6270380e0035f2545b18ae702dab630d, type: 3}
 --- !u!1 &2171495962412158064
 GameObject:
   m_ObjectHideFlags: 0

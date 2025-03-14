@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
         resetButton.gameObject.SetActive(false);
         quitButton.onClick.AddListener(QuitGame);
         quitButton.gameObject.SetActive(false);
-        winText.gameObject.SetActive(false); 
+        winText.gameObject.SetActive(false);
     }
 
     public void PlayerDestroyed(string player)
@@ -35,12 +35,12 @@ public class GameManager : MonoBehaviour
 
     void ResetGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     void QuitGame()
     {
         Debug.Log("Quit button clicked");
-        Application.Quit(); 
+        Application.Quit();
     }
 }
