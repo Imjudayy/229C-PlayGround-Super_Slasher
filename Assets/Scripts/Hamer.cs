@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Hamer : MonoBehaviour
 {
@@ -25,6 +26,35 @@ public class Hamer : MonoBehaviour
                 targetRb.AddForce(-collision.transform.forward * force, ForceMode.Impulse);
             }
             acc += 5;
+
+           
+            PlayerInput playerInput = collision.gameObject.GetComponent<PlayerInput>();
+            if (playerInput != null)
+            {
+                Gamepad gamepad = playerInput.devices[0] as Gamepad;
+                if (gamepad != null)
+                {
+                    VibrateGamepad(gamepad, 0.5f, 0.7f, 1.0f);
+                }
+            }
+        }
+    }
+
+    void VibrateGamepad(Gamepad gamepad, float duration, float lowIntensity, float highIntensity)
+    {
+        if (gamepad != null)
+        {
+            gamepad.SetMotorSpeeds(lowIntensity, highIntensity);
+            StartCoroutine(StopVibration(gamepad, duration));
+        }
+    }
+
+    System.Collections.IEnumerator StopVibration(Gamepad gamepad, float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        if (gamepad != null)
+        {
+            gamepad.SetMotorSpeeds(0, 0);
         }
     }
 }
