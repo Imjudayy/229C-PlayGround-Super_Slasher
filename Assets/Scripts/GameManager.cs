@@ -21,11 +21,11 @@ public class GameManager : MonoBehaviour
     {
         if (player == "Player1")
         {
-            winText.text = "Player2 Wins!";
+            winText.text = "Player 2 Wins!";
         }
         else if (player == "Player2")
         {
-            winText.text = "Player1 Wins!";
+            winText.text = "Player 1 Wins!";
         }
 
         winText.gameObject.SetActive(true);

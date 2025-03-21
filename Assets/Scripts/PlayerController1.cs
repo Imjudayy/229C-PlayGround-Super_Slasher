@@ -14,6 +14,7 @@ public class PlayerController1 : MonoBehaviour
     private bool isHit = false; 
 
     private PlayerInput playerInput;
+    private Animator animator;
 
     [Header("Ground Check")]
     public Transform groundCheck;
@@ -25,6 +26,7 @@ public class PlayerController1 : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInput>();
+        animator = GetComponent<Animator>();
     }
 
     
@@ -68,6 +70,14 @@ public class PlayerController1 : MonoBehaviour
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z); 
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             jumpCount++;
+        }
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            animator.SetTrigger("Attack");
         }
     }
 
