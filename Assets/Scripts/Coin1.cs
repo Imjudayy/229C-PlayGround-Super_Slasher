@@ -8,6 +8,9 @@ public class Coin1 : MonoBehaviour
     public Sword sword;
     public Hamer hamer;
 
+    public AudioClip getCoinSfx;
+    public AudioSource playerAudio;
+
     void Start()
     {
         GameObject p1 = GameObject.Find("sword");
@@ -31,10 +34,12 @@ public class Coin1 : MonoBehaviour
         if (other.CompareTag("Player1") || other.CompareTag("Sword"))
         {
             sword.acc *= 2;
+            playerAudio.PlayOneShot(getCoinSfx);
         }
         else if (other.CompareTag("Player2") || other.CompareTag("Hamer"))
         {
             hamer.acc *= 2;
+            playerAudio.PlayOneShot(getCoinSfx);
         }
 
     }

@@ -8,6 +8,9 @@ public class Coin2 : MonoBehaviour
     public PlayerController1 player1;
     public PlayerController1 player2;
 
+    public AudioClip getCoinSfx;
+    public AudioSource playerAudio;
+
     void Start()
     {
         GameObject p1 = GameObject.Find("Player1");
@@ -32,10 +35,12 @@ public class Coin2 : MonoBehaviour
         if (other.CompareTag("Player1") || other.CompareTag("Sword"))
         {
             player1.maxJumps = 3;
+            playerAudio.PlayOneShot(getCoinSfx);
         }
         else if (other.CompareTag("Player2") || other.CompareTag("Hamer"))
         {
             player2.maxJumps = 3;
+            playerAudio.PlayOneShot(getCoinSfx);
         }
 
     }

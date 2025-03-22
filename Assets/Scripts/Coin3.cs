@@ -12,6 +12,9 @@ public class Coin3 : MonoBehaviour
     public PlayerController1 player1;
     public PlayerController1 player2;
 
+    public AudioClip getCoinSfx;
+    public AudioSource playerAudio;
+
     void Start()
     {
         GameObject p1 = GameObject.Find("Player1");
@@ -41,12 +44,14 @@ public class Coin3 : MonoBehaviour
             rb_P1.mass +=1;
             player1.moveSpeed += 10;
             player1.jumpForce += 5;
+            playerAudio.PlayOneShot(getCoinSfx);
         }
         else if (other.CompareTag("Player2") || other.CompareTag("Hamer"))
         {
             rb_P2.mass += 1;
             player2.moveSpeed += 10;
             player2.jumpForce += 5;
+            playerAudio.PlayOneShot(getCoinSfx);
         }
 
     }
