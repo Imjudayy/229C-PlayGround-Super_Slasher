@@ -23,6 +23,7 @@ public class PlayerController1 : MonoBehaviour
 
     public AudioClip jumpSfx;
     public AudioClip attackSfx;
+    public ParticleSystem slash;
     public AudioSource playerAudio;
 
     private void Awake()
@@ -83,6 +84,7 @@ public class PlayerController1 : MonoBehaviour
         {
             animator.SetTrigger("Attack");
             playerAudio.PlayOneShot(attackSfx);
+            Invoke("PlaySlashEffect", 1f);
         }
     }
 
@@ -108,4 +110,10 @@ public class PlayerController1 : MonoBehaviour
     {
         isHit = false;
     }
+
+    void PlaySlashEffect()
+    {
+        slash.Play();
+    }
+
 }
