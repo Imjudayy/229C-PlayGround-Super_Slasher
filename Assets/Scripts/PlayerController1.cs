@@ -21,6 +21,9 @@ public class PlayerController1 : MonoBehaviour
     public float groundCheckRadius = 0.3f;
     public LayerMask groundLayer;
 
+    public AudioClip jumpSfx;
+    public AudioClip attackSfx;
+    public AudioSource playerAudio;
 
     private void Awake()
     {
@@ -70,6 +73,7 @@ public class PlayerController1 : MonoBehaviour
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z); 
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             jumpCount++;
+            playerAudio.PlayOneShot(jumpSfx);
         }
     }
 
@@ -78,6 +82,7 @@ public class PlayerController1 : MonoBehaviour
         if (context.started)
         {
             animator.SetTrigger("Attack");
+            playerAudio.PlayOneShot(attackSfx);
         }
     }
 
