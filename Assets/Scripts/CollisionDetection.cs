@@ -4,6 +4,8 @@ public class CollisionDetection : MonoBehaviour
 {
     public GameManager gameManager;
     private bool hasTriggered = false;
+    public AudioSource gameAudioSource;
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,6 +21,15 @@ public class CollisionDetection : MonoBehaviour
             }
             hasTriggered = true;
             Destroy(other.gameObject);
+
+            
+            if (gameAudioSource != null)
+            {
+                gameAudioSource.Stop();
+            }
+
+            
+            Time.timeScale = 0; 
         }
     }
 }
