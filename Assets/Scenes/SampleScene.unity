@@ -2104,8 +2104,6 @@ MonoBehaviour:
   resetButton: {fileID: 2957154}
   quitButton: {fileID: 1414495441}
   playCreditsButton: {fileID: 1303112033}
-  videoPlayer: {fileID: 0}
-  videoPanel: {fileID: 0}
 --- !u!114 &1484044784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2485,6 +2483,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3632619520430644306, guid: a15fe51ab9b1d9a43b378a6d2158aa69, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: c576b003d2508d04ca3908e2b5acf5f3, type: 2}
     - target: {fileID: 6123567654517675853, guid: a15fe51ab9b1d9a43b378a6d2158aa69, type: 3}
       propertyPath: target
       value: 
